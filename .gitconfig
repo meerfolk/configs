@@ -1,0 +1,3 @@
+[alias]
+	sstatus = status --short
+	tree = log --graph --pretty=oneline --abbrev-commit
