@@ -1,3 +1,5 @@
 [alias]
 	sstatus = status --short
 	tree = log --graph --pretty=oneline --abbrev-commit
+[core]
+        editor = "vim"
