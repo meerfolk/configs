@@ -4,19 +4,20 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
+set backspace=indent,eol,start
 set noswapfile
 set rnu
 set cursorline
 set incsearch
+set wildignore+=*/node_modules/*,*/.git/*
 
 autocmd InsertEnter,InsertLeave * set cul!
+au BufReadPost *.stache,*.hbs set syntax=mustache
 
 syntax on
 
 filetype plugin indent on
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -35,21 +36,26 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'w0rp/ale'
 Plugin 'HerringtonDarkholme/yats.vim'
-Plugin 'zxqfl/tabnine-vim'
-Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'PieterjanMontens/vim-pipenv'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'neoclide/coc.nvim'
+Plugin 'mustache/vim-mustache-handlebars'
 call vundle#end()
 
 colorscheme monokai
 
 nnoremap <silent> <C-B> :NERDTreeToggle<CR>
+nnoremap <silent> <S-B> :NERDTreeFind %<CR>
+
 let g:NERDTreeChDirMode=2
 
 let g:NERDTreeTabsOpen=1
 
-let g:ctrlp_custom_ignore = '\.git$'
-let g:ctrlp_custom_ignore = '\/node_modules\/'
+
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 20
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 
 let g:tern_map_keys = 1
 let g:tern_show_argument_hints='on_hold'
@@ -64,6 +70,16 @@ let g:ale_sign_warning = '!'
 let g:ale_fix_on_save = 1
 
 let g:javascript_plugin_jsdoc = 1
+
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ 'coc-html', 
+  \ ]
 
 noremap <Leader>y "+y
 noremap <Leader>p "+p
