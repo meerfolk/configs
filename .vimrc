@@ -10,12 +10,10 @@ set noswapfile
 set rnu
 set cursorline
 set incsearch
-set wildignore+=*/node_modules/*,*/.git/*
+set wildignore+=*/node_modules/*,*/.git/*,*/yarn-mirror/*
 
 autocmd InsertEnter,InsertLeave * set cul!
 au BufReadPost *.stache,*.hbs set syntax=mustache
-
-syntax on
 
 filetype plugin indent on
 
@@ -39,20 +37,23 @@ Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'neoclide/coc.nvim'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'jremmen/vim-ripgrep'
+Plugin  'altercation/vim-colors-solarized'
 call vundle#end()
-
-colorscheme monokai
+ 
+syntax enable
 
 nnoremap <silent> <C-B> :NERDTreeToggle<CR>
 nnoremap <silent> <S-B> :NERDTreeFind %<CR>
+xnoremap <C-F> "fy:Rg <C-R>f<CR>
 
 let g:NERDTreeChDirMode=2
 
 let g:NERDTreeTabsOpen=1
 
-
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 20
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 

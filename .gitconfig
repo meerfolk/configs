@@ -1,5 +1,10 @@
 [alias]
 	sstatus = status --short
 	tree = log --graph --pretty=oneline --abbrev-commit
+    stopwork = !git add -A && git commit -m 'INWORK'
+    backtowork = ![[ $(git log -1 --pretty=%B) == "INWORK" ]] && git reset HEAD~1 || echo "no stopped work"
+    safecommit = ![[ $(git log -1 --pretty=%B) == "INWORK" ]] && echo "previous commit in work" || git commit -m $1
 [core]
         editor = "vim"
+[diff]
+	tool = vimdiff
