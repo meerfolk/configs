@@ -522,7 +522,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "u",
+                  "key_code": "r",
                   "modifiers": {
                     "mandatory": ["right_option"],
                     "optional": ["any"]
@@ -566,7 +566,7 @@
                   }
                 ],
                 "from": {
-                  "key_code": "o",
+                  "key_code": "e",
                   "modifiers": {
                     "mandatory": ["right_option"],
                     "optional": ["any"]
