@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages/app/src'
+let g:netrw_dirhist_9='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages/app'
+let g:netrw_dirhist_8='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages'
+let g:netrw_dirhist_7='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui'
+let g:netrw_dirhist_6='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages/ui/public'
+let g:netrw_dirhist_5='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages/ui'
+let g:netrw_dirhist_4='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages/ui/node_modules'
+let g:netrw_dirhist_3='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages/ui'
+let g:netrw_dirhist_2='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui/packages'
+let g:netrw_dirhist_1='/Users/vadmim.osokin/projects/pets/azure-blob-storage-gui'
