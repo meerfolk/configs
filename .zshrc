@@ -28,6 +28,14 @@ masterdiff() {
   vimdiff $1 <(git show master:$1)
 }
 
+httpj() {
+  http $1 | python3 -m json.tool
+}
+
+httpjv() {
+  httpj $1 | vim -
+}
+
 alias vimcode="vim +'colorscheme solarized'"
 
 stty -ixon
