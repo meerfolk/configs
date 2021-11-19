@@ -10,19 +10,19 @@ set wildignore+=*/node_modules/*,*/.git/*,*/yarn-mirror/*
 set signcolumn=yes
 set updatetime=100
 
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-
-nnoremap <silent> <C-q> :NERDTreeToggle<CR>
-nnoremap <silent> <S-q> :NERDTreeFind %<CR>
+nnoremap <silent> <C-q> :NvimTreeToggle<CR>
+nnoremap <silent> <S-q> :NvimTreeFindFileToggle<CR>
 " CoC extensions
-let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-pairs', 'coc-pyright']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-pairs', 'coc-pyright', 'coc-tabnine']
 
 " Add CoC Prettier if prettier is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
+endif
+
+" Add CoC Git if git is inited
+if isdirectory('./.git')
+  let g:coc_global_extensions += ['coc-git']
 endif
 
 " Add CoC ESLint if ESLint is installed
@@ -47,14 +47,8 @@ noremap <Leader>y "+y
 noremap <Leader>p "+p
 
 " colorscheme section
-set background=dark
-colorscheme oceanic_material
+colorscheme nordfox
 
-" Changing cursor shape per mode
-" 1 or 0 -> blinking block
-" 2 -> solid block
-" 3 -> blinking underscore
-" 4 -> solid underscore
 if exists('$TMUX')
     " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
     let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"

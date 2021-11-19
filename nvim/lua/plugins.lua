@@ -3,83 +3,31 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
     use {'neoclide/coc.nvim', branch = 'release'}
-    use 'scrooloose/nerdtree'
-    use { "junegunn/fzf", run = ":call fzf#install()" }
+    use { 'junegunn/fzf', run = ':call fzf#install()' }
     use "junegunn/fzf.vim"
-    use 'glepnir/oceanic-material'
     use 'vim-airline/vim-airline'
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use 'vim-airline/vim-airline-themes'
-    use 'tpope/vim-fugitive' 
-    use 'airblade/vim-gitgutter'
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require'nvim-tree'.setup {} end
+    }
+    use 'lukas-reineke/indent-blankline.nvim'
+    use 'terrortylor/nvim-comment'
+    use 'ray-x/lsp_signature.nvim'
+    use 'EdenEast/nightfox.nvim'
 end)
 
-local neogit = require('neogit')
+-- indent_blankline configuration
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
 
-neogit.setup {
-  disable_signs = false,
-  disable_hint = false,
-  disable_context_highlighting = false,
-  disable_commit_confirmation = false,
-  auto_refresh = true,
-  disable_builtin_notifications = false,
-  commit_popup = {
-      kind = "split",
-  },
-  -- Change the default way of opening neogit
-  kind = "tab",
-  -- customize displayed signs
-  signs = {
-    -- { CLOSED, OPENED }
-    section = { ">", "v" },
-    item = { ">", "v" },
-    hunk = { ">", "v" },
-  },
-  integrations = {
-    -- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `sindrets/diffview.nvim`.
-    -- The diffview integration enables the diff popup, which is a wrapper around `sindrets/diffview.nvim`.
-    --
-    -- Requires you to have `sindrets/diffview.nvim` installed.
-    -- use { 
-    --   'TimUntersberger/neogit', 
-    --   requires = { 
-    --     'nvim-lua/plenary.nvim',
-    --     'sindrets/diffview.nvim' 
-    --   }
-    -- }
-    --
-    diffview = false  
-  },
-  -- Setting any section to `false` will make the section not render at all
-  sections = {
-    untracked = {
-      folded = false
-    },
-    unstaged = {
-      folded = false
-    },
-    staged = {
-      folded = false
-    },
-    stashes = {
-      folded = true
-    },
-    unpulled = {
-      folded = true
-    },
-    unmerged = {
-      folded = false
-    },
-    recent = {
-      folded = true
-    },
-  },
-  -- override/add mappings
-  mappings = {
-    -- modify status buffer mappings
-    status = {
-      -- Adds a mapping with "B" as key that does the "BranchPopup" command
-      ["B"] = "BranchPopup",
-    }
-  }
+require('indent_blankline').setup {
+    show_end_of_line = true,
 }
+
+-- nvim-tree configuration
+require('nvim-tree').setup()
+
+-- nvim_comment configuration
+require('nvim_comment').setup()
