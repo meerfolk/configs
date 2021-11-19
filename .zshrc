@@ -28,15 +28,7 @@ masterdiff() {
   vimdiff $1 <(git show master:$1)
 }
 
-httpj() {
-  http $1 | python3 -m json.tool
-}
-
-httpjv() {
-  httpj $1 | vim -
-}
-
-alias vimcode="vim +'colorscheme solarized'"
+alias -g J='| python -m json.tool' 
 
 stty -ixon
 
@@ -50,4 +42,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
+export DISABLE_AUTO_TITLE="true"
 
+export TERM=screen-256color
+export GOPATH=$HOME/go
