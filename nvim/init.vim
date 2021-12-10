@@ -11,7 +11,7 @@ set signcolumn=yes
 set updatetime=100
 
 nnoremap <silent> <C-q> :NvimTreeToggle<CR>
-nnoremap <silent> <S-q> :NvimTreeFindFileToggle<CR>
+nnoremap <silent> <S-q> :NvimTreeFindFile<CR>
 " CoC extensions
 let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-pairs', 'coc-pyright', 'coc-tabnine']
 
@@ -37,6 +37,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " fzf section
 set rtp+=~/.fzf
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <C-p> :GFiles --cached --others --exclude-standard<Cr>
 nnoremap <C-g> :Ag <Cr>
 
