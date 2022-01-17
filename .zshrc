@@ -1,4 +1,4 @@
-source /usr/local/share/antigen/antigen.zsh
+source ~/antigen.zsh
 
 export NVM_AUTO_USE=true
 export LC_ALL=en_US.UTF-8
@@ -10,6 +10,7 @@ antigen bundle vi-mode
 antigen bundle npm
 antigen bundle docker
 antigen bundle lukechilds/zsh-nvm
+antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 
@@ -29,6 +30,9 @@ masterdiff() {
 }
 
 alias -g J='| python -m json.tool' 
+nvimopen() {
+    alacritty --working-directory $(pwd) -e zsh -c "nvim $(pwd)" &
+}
 
 stty -ixon
 
@@ -46,3 +50,6 @@ export DISABLE_AUTO_TITLE="true"
 
 export TERM=screen-256color
 export GOPATH=$HOME/go
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

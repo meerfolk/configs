@@ -10,10 +10,11 @@ set wildignore+=*/node_modules/*,*/.git/*,*/yarn-mirror/*
 set signcolumn=yes
 set updatetime=100
 
-nnoremap <silent> <C-q> :NvimTreeToggle<CR>
-nnoremap <silent> <S-q> :NvimTreeFindFileToggle<CR>
+nnoremap <silent> <C-l> :NvimTreeToggle<CR>
+nnoremap <silent> <S-l> :NvimTreeFindFile<CR>
 " CoC extensions
-let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-pairs', 'coc-pyright', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-pairs', 'coc-pyright', 'coc-tabnine', 'coc-diagnostic']
+let b:coc_git_blame = 'true'
 
 " Add CoC Prettier if prettier is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -30,10 +31,15 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gdc <Plug>(coc-definition)
+nmap <silent> gdv :vsplit<CR><Plug>(coc-definition)
+nmap <silent> gdt :call CocAction('jumpDefinition', 'tabe')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nmap <silent> <Leader>j <Plug>(coc-diagnostic-next-error)
+nmap <silent> <Leader>k <Plug>(coc-diagnostic-prev-error)
 
 " fzf section
 set rtp+=~/.fzf

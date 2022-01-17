@@ -19,6 +19,20 @@
             "description": "my config",
             "manipulators": [
               {
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "apple_vendor_top_case_key_code": "keyboard_fn"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
                 "conditions": [
                   {
                     "name": "space_pressed",
@@ -108,6 +122,45 @@
                     "name": "space_pressed",
                     "type": "variable_if",
                     "value": 1
+                  },
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                        "^com\\.googlecode\\.iterm2$"
+                    ],
+                    "file_paths": [
+                        "^/usr/local/bin/alacritty$"
+                    ]
+                  }
+                ],
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "home"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "space_pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  },
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                        "^com\\.googlecode\\.iterm2$"
+                    ],
+                    "file_paths": [
+                        "^/usr/local/bin/alacritty$"
+                    ]
                   }
                 ],
                 "from": {
@@ -130,6 +183,15 @@
                     "name": "space_pressed",
                     "type": "variable_if",
                     "value": 1
+                  },
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                        "^com\\.googlecode\\.iterm2$"
+                    ],
+                    "file_paths": [
+                        "^/usr/local/bin/alacritty$"
+                    ]
                   }
                 ],
                 "from": {
@@ -146,6 +208,37 @@
                 ],
                 "type": "basic"
               },
+              {
+                "conditions": [
+                  {
+                    "name": "space_pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  },
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                        "^com\\.googlecode\\.iterm2$"
+                    ],
+                    "file_paths": [
+                        "^/usr/local/bin/alacritty$"
+                    ]
+                  }
+                ],
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "end"
+                  }
+                ],
+                "type": "basic"
+              },
+
               {
                 "conditions": [
                   {
