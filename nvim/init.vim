@@ -43,6 +43,7 @@ nmap <silent> <Leader>k <Plug>(coc-diagnostic-prev-error)
 
 " fzf section
 set rtp+=~/.fzf
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <C-p> :GFiles --cached --others --exclude-standard<Cr>
 nnoremap <C-g> :Ag <Cr>
 
